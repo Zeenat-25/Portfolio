@@ -1,136 +1,123 @@
-# Zeenat Ansari — Portfolio Website
+<div align="center">
 
-A cinematic, editorial personal portfolio built with plain HTML/CSS/JS, GSAP, and Lenis smooth scroll. No build step, no framework — just open it in a browser.
+# Zeenat Ansari — Portfolio
 
-**Live sections:** Hero · About · Currently Working On · Education · Skills · Projects · Academic Performance · GitHub · Experience · Achievements · Contact
+**A cinematic, editorial personal portfolio built with HTML, CSS, GSAP & Lenis.**
 
----
+No framework. No build step. Just open it and it runs.
 
-## 📁 Folder Structure
-
-```
-zeenat-portfolio/
-├── index.html          ← everything (HTML + CSS + JS in one file)
-├── assets/
-│   └── zeenat-hero.png ← your hero portrait
-└── README.md            ← this file
-```
-
-**Keep `index.html` and the `assets` folder together, in the same directory, at all times.** If you move one without the other, the hero image will break.
+</div>
 
 ---
 
-## 🚀 Running It
+## About
 
-No installation, no build tools. Just double-click `index.html` and it opens in your default browser.
+This is the personal portfolio of **Zeenat Ansari**, a third-year BCA student at Mumbai University aspiring to become an AI Engineer. The site is designed as a full-bleed cinematic experience — inspired by luxury editorial campaigns and premium product pages — rather than a conventional developer portfolio template.
 
-To host it live, use any static hosting provider and upload the whole folder (not just `index.html`):
-
-- **Netlify** — drag and drop the `zeenat-portfolio` folder onto [app.netlify.com/drop](https://app.netlify.com/drop)
-- **Vercel** — `vercel deploy` from inside the folder, or connect a GitHub repo
-- **GitHub Pages** — push the folder to a repo, enable Pages in Settings, point it at the root
+**Sections:** Hero · About · Currently Working On · Education · Skills · Projects · Academic Performance · GitHub · Experience · Achievements · Contact
 
 ---
 
-## 🎨 Tech Stack
+## Tech Stack
 
-| Purpose | Library |
+| Layer | Tool |
 |---|---|
-| Structure & styling | Plain HTML5 + CSS3 (CSS variables, no framework) |
-| Fonts | Bebas Neue, Space Grotesk, Inter (Google Fonts) |
+| Markup & styling | HTML5, CSS3 (custom properties, no framework) |
+| Typography | Bebas Neue, Space Grotesk, Inter — via Google Fonts |
 | Scroll-triggered animation | [GSAP](https://gsap.com/) + ScrollTrigger |
 | Smooth scrolling | [Lenis](https://lenis.darkroom.engineering/) |
 
-All loaded via CDN (`cdnjs.cloudflare.com` / `fonts.googleapis.com`) — no `npm install` needed. This also means you need an internet connection for fonts/animations to load correctly.
+All dependencies load via CDN — no `npm install`, no bundler, no build step.
 
 ---
 
-## ✏️ Customization Guide
+## Getting Started
 
-### 1. Swap the hero photo
-Replace `assets/zeenat-hero.png` with your own image, **keeping the exact same filename** — or update the path in `index.html`:
-```html
-<img src="assets/zeenat-hero.png" ...>
-```
-(appears once, in the `<section class="hero">` block)
+Clone or download this folder, then just open `index.html` in a browser:
 
-### 2. Hook up your resume
-Currently the "Download Resume" buttons show a placeholder alert. To wire up a real PDF:
-1. Add your resume file to the project, e.g. `assets/resume.pdf`
-2. In `index.html`, find this script block near the bottom:
-   ```js
-   ['resumeBtnNav','resumeBtnHero','resumeBtnContact'].forEach(id=>{
-     const el = document.getElementById(id);
-     if(el) el.addEventListener('click', (e)=>{
-       e.preventDefault();
-       alert('Add your resume PDF to the project and link it here to enable downloads.');
-     });
-   });
-   ```
-3. Replace it with:
-   ```js
-   ['resumeBtnNav','resumeBtnHero','resumeBtnContact'].forEach(id=>{
-     const el = document.getElementById(id);
-     if(el) el.setAttribute('href', 'assets/resume.pdf');
-     if(el) el.setAttribute('download', '');
-   });
-   ```
-
-### 3. Update contact links
-Search for these in `index.html` (inside `<section id="contact">`) and replace with your real details:
-```html
-<a href="mailto:zeenat.ansari@example.com">...</a>
-<a href="https://github.com">...</a>
-<a href="https://linkedin.com">...</a>
-<a href="https://instagram.com">...</a>
+```bash
+open index.html      # macOS
+start index.html      # Windows
 ```
 
-### 4. Contact form
-The form currently just shows a confirmation alert (no backend). To make it actually send you messages, connect it to a form service like [Formspree](https://formspree.io/) or [Web3Forms](https://web3forms.com/) — both offer a free tier with no server required. Replace the `onsubmit` handler on the `<form class="contact-form">` element with an action pointing to your form endpoint.
+That's it — the whole site is one self-contained file plus an `assets` folder.
 
-### 5. Connect live GitHub / LeetCode stats
-The GitHub section currently uses placeholder numbers and a static contribution-graph pattern. To make it live:
-- Swap in a service like [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats) (image-based, easiest) or call the GitHub REST/GraphQL API directly with JavaScript
-- For LeetCode, similar community APIs exist (e.g. `leetcode-stats-api`)
+### Deploying
 
-### 6. Add a new project card
-Copy one `<article class="project">...</article>` block inside `<section id="projects">`, edit the title/description/tech stack/links.
+Upload the whole folder (not just `index.html`) to any static host:
 
-### 7. Add a new achievement
-Copy one `.t-item` block inside `<section id="achievements">` → `.timeline`.
+- **Netlify** — drag the `zeenat-portfolio` folder onto [app.netlify.com/drop](https://app.netlify.com/drop)
+- **Vercel** — `vercel deploy` from inside the folder
+- **GitHub Pages** — push to a repo, enable Pages in Settings → Pages, root directory
 
-### 8. Colors & typography
-All core design tokens live at the top of the `<style>` block:
+---
+
+## Folder Structure
+
+```
+zeenat-portfolio/
+├── index.html            # entire site — markup, styles, and scripts
+├── assets/
+│   └── zeenat-hero.png    # hero portrait
+└── README.md
+```
+
+> `index.html` and `assets/` must stay together in the same directory — the hero image path is relative.
+
+---
+
+## Configuration
+
+Everything below lives inside `index.html`. Search for the relevant text to find each block.
+
+**Colors & type** — all design tokens are CSS variables at the top of the `<style>` block:
 ```css
 :root{
-  --bg:#090909;        /* background */
-  --accent:#C1121F;     /* crimson accent */
-  --text:#F5F3F0;       /* primary text */
-  --text-dim:#8c8c8c;   /* secondary text */
+  --bg:#090909;         /* background */
+  --accent:#C1121F;      /* crimson accent */
+  --text:#F5F3F0;        /* primary text */
+  --text-dim:#8c8c8c;    /* secondary text */
 }
 ```
-Change these and the whole site updates consistently.
+
+**Hero photo** — replace `assets/zeenat-hero.png` (keep the filename, or update the `<img src="...">` in the hero section).
+
+**Resume download** — link a PDF by adding it to `assets/` and updating the resume button script near the bottom of the file:
+```js
+['resumeBtnNav','resumeBtnHero','resumeBtnContact'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) el.setAttribute('href', 'assets/resume.pdf');
+  if(el) el.setAttribute('download', '');
+});
+```
+
+**Contact links** — update the email/GitHub/LinkedIn/Instagram links inside `<section id="contact">`.
+
+**Contact form submission** — the form currently confirms locally with no backend. Point its `action` at a service like [Formspree](https://formspree.io/) or [Web3Forms](https://web3forms.com/) to receive real submissions.
+
+**GitHub / LeetCode stats** — the GitHub section uses static placeholder numbers. Swap in [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats) or call the GitHub API directly for live data.
+
+**Projects & achievements** — each project card is a `<article class="project">` block; each achievement is a `.t-item` block. Duplicate one and edit the content to add more.
 
 ---
 
-## ♿ Accessibility & Performance Notes
+## Accessibility & Performance
 
-- Respects `prefers-reduced-motion` — animations are disabled for users who request it
-- Semantic HTML (`<header>`, `<nav>`, `<section>`, `<article>`, `<footer>`)
-- All interactive elements have visible focus states
-- Images use `loading="eager"` only for the hero (above the fold); consider `loading="lazy"` if you add more images below the fold
-- Fonts and scripts load from CDNs — for best performance, consider self-hosting fonts/scripts in production
-
----
-
-## 📌 Known Placeholders (things to replace before going fully live)
-
-- [ ] Resume PDF not yet linked
-- [ ] Email / GitHub / LinkedIn / Instagram are placeholder values
-- [ ] GitHub contribution graph and stats are static placeholders
-- [ ] Contact form doesn't send anywhere yet (no backend connected)
-- [ ] Project case-study links (`GitHub` / `Live Demo` buttons) point to `#`
+- Honors `prefers-reduced-motion` — animation is disabled for users who request it
+- Semantic HTML throughout (`header`, `nav`, `section`, `article`, `footer`)
+- Visible focus states on all interactive elements
+- Fully responsive — desktop, tablet, and mobile layouts
 
 ---
 
-© 2026 Zeenat Ansari — Designed & Developed by Zeenat Ansari
+## License
+
+This project is personal work by Zeenat Ansari. Feel free to reference the structure for your own portfolio, but please don't reuse the content or imagery as-is.
+
+---
+
+<div align="center">
+
+© 2026 Zeenat Ansari · Designed & Developed by Zeenat Ansari
+
+</div>

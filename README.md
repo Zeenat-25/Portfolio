@@ -31,27 +31,6 @@ All dependencies load via CDN — no `npm install`, no bundler, no build step.
 
 ---
 
-## Getting Started
-
-Clone or download this folder, then just open `index.html` in a browser:
-
-```bash
-open index.html      # macOS
-start index.html      # Windows
-```
-
-That's it — the whole site is one self-contained file plus an `assets` folder.
-
-### Deploying
-
-Upload the whole folder (not just `index.html`) to any static host:
-
-- **Netlify** — drag the `zeenat-portfolio` folder onto [app.netlify.com/drop](https://app.netlify.com/drop)
-- **Vercel** — `vercel deploy` from inside the folder
-- **GitHub Pages** — push to a repo, enable Pages in Settings → Pages, root directory
-
----
-
 ## Folder Structure
 
 ```

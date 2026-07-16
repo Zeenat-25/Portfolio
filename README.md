@@ -6,8 +6,6 @@
 
 No framework. No build step. Just open it and it runs.
 
-//ching
-
 </div>
 
 ---
